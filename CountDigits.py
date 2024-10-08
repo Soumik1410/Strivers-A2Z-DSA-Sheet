@@ -1,77 +1,29 @@
-class Node:
-    def __init__(self, info): 
-        self.info = info  
-        self.left = None  
-        self.right = None 
-        self.level = None 
+#User function Template for python3
 
-    def __str__(self):
-        return str(self.info) 
 
-class BinarySearchTree:
-    def __init__(self): 
-        self.root = None
+class Solution:
+    def evenlyDivides (self, N):
+        # code here
+        count = 0
+        num = N
+        while num!=0:
+            dig = num % 10
+            if dig != 0 and N % dig == 0:
+                count = count + 1
+            num = num // 10
+        
+        return count
 
-    def create(self, val):  
-        if self.root == None:
-            self.root = Node(val)
-        else:
-            current = self.root
-         
-            while True:
-                if val < current.info:
-                    if current.left:
-                        current = current.left
-                    else:
-                        current.left = Node(val)
-                        break
-                elif val > current.info:
-                    if current.right:
-                        current = current.right
-                    else:
-                        current.right = Node(val)
-                        break
-                else:
-                    break
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
 
-# Enter your code here. Read input from STDIN. Print output to STDOUT
-'''
-class Node:
-      def __init__(self,info): 
-          self.info = info  
-          self.left = None  
-          self.right = None 
-           
+if __name__ == '__main__': 
+    t = int (input ())
+    for _ in range (t):
+        N = int(input())
+       
 
-       // this is a node of the tree , which contains info as data, left , right
-'''
-
-def lca(root, v1, v2):
-    #Enter your code here
-    if v1 > v2:
-        temp = v1
-        v1 = v2
-        v2 = temp
-    if root is None:
-        return None
-    if v1 == root.info or v2 == root.info:
-        return root
-    if v1 < root.info and v2 > root.info:
-        return root
-    if v1 < root.info and v2 < root.info:
-        return lca(root.left, v1, v2)
-    if v1 > root.info and v2 > root.info:
-        return lca(root.right, v1, v2)
-
-tree = BinarySearchTree()
-t = int(input())
-
-arr = list(map(int, input().split()))
-
-for i in range(t):
-    tree.create(arr[i])
-
-v = list(map(int, input().split()))
-
-ans = lca(tree.root, v[0], v[1])
-print (ans.info)
+        ob = Solution()
+        print(ob.evenlyDivides(N))
+# } Driver Code Ends
