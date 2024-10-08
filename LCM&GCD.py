@@ -1,17 +1,32 @@
-bool isPalindrome(int x) {
-    if(x<0)
-        return false;
-    int rev = 0, dig, num = x;
-    while(x > 0)
-    {
-        dig = x % 10;
-        if(214748364.7 < rev)
-            return false;
-        rev = rev * 10 + dig;
-        x = x / 10;
-    }
-    if(rev == num)
-        return true;
-    else
-        return false;
-}
+#User function Template for python3
+
+class Solution:
+    def gcd(self, A, B):
+        if A == 0:
+            return B
+        return self.gcd(B % A, A)
+        
+    def lcmAndGcd(self, A , B):
+        # code here 
+        hcf = self.gcd(A, B)
+        lcm = A * B // hcf
+        ans = [lcm, hcf]
+        return ans
+        
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+import math
+if __name__ == '__main__': 
+    t = int (input ())
+    for _ in range (t):
+        A,B=map(int,input().split())
+        
+        ob = Solution()
+        ptr = ob.lcmAndGcd(A,B)
+        
+        print(ptr[0],ptr[1])
+# } Driver Code Ends
